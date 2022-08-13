@@ -29,8 +29,8 @@ Example Playbook
 ```
 - name: Install reverse proxy
   hosts: servers
-      roles:
-         - { role: reverse-proxy-nginx, when: ansible_lsb.id == 'Ubuntu' }
+  roles:
+    - reverse-proxy-nginx
 ```
 
 Before start
