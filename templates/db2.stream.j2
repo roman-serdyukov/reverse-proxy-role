@@ -1,0 +1,17 @@
+upstream db2_ssh {
+  server {{ db2_ip }}:{{ ssh_port }};
+}
+
+server {
+    listen {{ db2_stream }};
+    proxy_pass db2_ssh;
+}
+
+upstream db2_mysql {
+  server {{ db2_ip }}:{{ db_port }};
+}
+
+server {
+    listen {{ db2_db_stream }};
+    proxy_pass db2_mysql;
+}

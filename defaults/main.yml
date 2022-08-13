@@ -1,0 +1,50 @@
+---
+# defaults file for reverse-proxy-nginx
+
+domain_zones:
+  - www
+  - gitlab
+  - grafana
+  - prometheus
+  - alertmanager
+
+domain_streams:
+  - www
+  - gitlab
+  - monitoring
+  - db1
+  - db2
+  - runner
+  
+my_domain: reserdukov.ru
+
+# Ip for hosts
+db1_ip:               "192.168.31.3"    
+db2_ip:               "192.168.31.4"    
+www_ip:               "192.168.5.3"     
+gitlab_ip:            "192.168.6.3"     
+runner_ip:            "192.168.6.4"     
+alertmanager_ip:      "192.168.8.3"     
+prometheus_ip:        "192.168.8.3"   
+grafana_ip:           "192.168.8.3"
+monitoring_ip:        "192.168.8.3"
+
+# Ports for proxy
+http_port:            "80"
+https_port:           "443"
+ssh_port:             "22"
+db_port:              "3306"
+grafana_port:         "3000"
+prometheus_port:      "9090"
+alert_port:           "9093"
+alert_bot_port:       "8080"
+
+# External ports
+db1_stream:           "22313"
+db2_stream:           "22314"
+gitlab_stream:        "22063"
+runner_stream:        "22064"
+www_stream:           "22053"
+monitoring_stream:    "22083"
+db1_db_stream:        "33061"
+db2_db_stream:        "33062"

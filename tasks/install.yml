@@ -1,0 +1,29 @@
+---
+# tasks file for install packages
+
+- name: Update apt cache
+  become: true
+  apt: 
+    update_cache: yes 
+    cache_valid_time: 3600
+  ignore_errors: true
+
+- name: Install nginx in Debian | Apt install
+  become: True
+  ansible.builtin.apt:
+    name: nginx
+    state: latest
+  notify: Nginx start
+
+- name: Nginx cert | Install letsencrypt
+  become: True
+  ansible.builtin.apt:
+    name: certbot
+    state: latest
+
+- name: Nginx cert | Install certbot nginx plugin
+  become: true
+  ansible.builtin.apt:
+    name: python3-certbot-nginx
+    state: latest
+

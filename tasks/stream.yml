@@ -1,0 +1,30 @@
+---
+# Task for configure streams
+
+- name: Nginx config | Create directory available for domain_streams
+  become: true
+  ansible.builtin.file:
+    path: /etc/nginx/stream-available/
+    state: directory
+
+- name: Nginx config | Create directory enabled for domain_streams
+  become: true
+  ansible.builtin.file:
+    path: /etc/nginx/stream-enabled/
+    state: directory
+
+- name: Nginx config | Copy stream files
+  become: True
+  ansible.builtin.template:
+    src: templates/{{ item }}.stream.j2
+    dest: /etc/nginx/stream-available/{{ item }}.stream
+  with_items: "{{ domain_streams }}"
+
+- name: Nginx config | Enable streams
+  become: True
+  ansible.builtin.file:
+    src: /etc/nginx/stream-available/{{ item }}.stream
+    dest: /etc/nginx/stream-enabled/{{ item }}
+    state: link
+  with_items: "{{ domain_streams }}"
+  notify: Nginx reload

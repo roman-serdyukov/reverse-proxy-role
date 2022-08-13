@@ -1,0 +1,10 @@
+---
+# Task for create certificates
+
+- name: Nginx cert | Create cert
+  become: True
+#  ansible.builtin.command: certbot --nginx --test-cert -m reserdukov@gmail.com --agree-tos -d {{ item }}.{{ my_domain }} --quiet --no-self-upgrade
+  ansible.builtin.command: certbot --nginx -m reserdukov@gmail.com --agree-tos -d {{ item }}.{{ my_domain }} --quiet --no-self-upgrade
+  with_items: "{{ domain_zones }}"
+  notify: Nginx reload
+ # ignore_errors: true
