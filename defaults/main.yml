@@ -16,7 +16,7 @@ domain_streams:
   - db2
   - runner
   
-my_domain: reserdukov.ru
+my_domain: your_domain
 
 # Ip for hosts
 db1_ip:               "192.168.31.3"    
