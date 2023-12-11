@@ -18,6 +18,8 @@ domain_streams:
   
 my_domain: your_domain
 
+email: example@email.com
+
 # Ip for hosts
 db1_ip:               "192.168.31.3"    
 db2_ip:               "192.168.31.4"    
